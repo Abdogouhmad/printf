@@ -16,6 +16,11 @@ int my_strlen(const char *str)
 	for (i = 0; str[i] != '\0'; ++i)
 		length++;
 
+	if (str == NULL)
+	{
+		exit(1);
+	}
+
 	return (length);
 }
 
@@ -27,6 +32,11 @@ int my_strlen(const char *str)
  */
 void my_putchar(const char c)
 {
+	if (c == '\n')
+	{
+		write(1, "\r", 1);
+	}
+
 	write(1, &c, 1);
 }
 
@@ -38,6 +48,11 @@ void my_putchar(const char c)
 void print_string(const char *string)
 {
 	int len = my_strlen(string);
+
+	if (string == NULL)
+	{
+		exit(1);
+	}
 
 	write(1, string, len);
 }
@@ -52,7 +67,14 @@ void print_string(const char *string)
  */
 void check_char(va_list myarg, int *count_char)
 {
-	my_putchar((char)va_arg(myarg, int));
+	char c = (char)va_arg(myarg, int);
+
+	if (c == '\n')
+	{
+		write(1, "\r", 1);
+	}
+
+	my_putchar(c);
 	(*count_char) += 1;
 }
 
@@ -67,6 +89,11 @@ void check_char(va_list myarg, int *count_char)
 void check_string(va_list myarg, int *count_char)
 {
 	char *str = va_arg(myarg, char *);
+
+	if (str == NULL)
+	{
+		exit(1);
+	}
 
 	print_string(str);
 	(*count_char) += my_strlen(str);
