@@ -41,6 +41,12 @@ int _printf(const char *format, ...)
 				count_char++;
 				i++;
 				break;
+			case 'd':
+				num_to_string(myarg, &count_char);
+				break;
+			case 'i':
+				num_to_string(myarg, &count_char);
+				break;
 			default:
 				my_putchar(format[i]);
 				count_char++;
