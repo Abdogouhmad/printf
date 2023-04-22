@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * _printf - prints formatted output to standard output.
  *
@@ -16,36 +17,38 @@ int _printf(const char *format, ...)
 	int i;
 	int count_char = 0;
 	va_list myarg;
+
 	va_start(myarg, format);
-
-
-	if (format == NULL)
-	{
-		return (-1);
-	}
-
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
 		{
-			my_putchar(format[i]);
-			count_char++;
+			switch (format[i + 1])
+			{
+			case 'c':
+				check_char(myarg, &count_char);
+				i++;
+				break;
+			case 's':
+				check_string(myarg, &count_char);
+				i++;
+				break;
+			case '%':
+				my_putchar('%');
+				count_char++;
+				i++;
+				break;
+			default:
+				my_putchar(format[i]);
+				count_char++;
+				break;
+			}
 		}
 		else
 		{
-			i++;
-			if (format[i] == 'c')
-				check_char(myarg, &count_char);
-
-			else if (format[i] == 's')
-				check_string(myarg, &count_char);
-
-			else if (format[i] == '%')
-			{
-				my_putchar('%');
-				count_char++;
-			}
+			my_putchar(format[i]);
+			count_char++;
 		}
 	}
 
