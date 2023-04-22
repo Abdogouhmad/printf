@@ -24,21 +24,20 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			switch (format[i])
+			switch (format[i + 1])
 			{
 			case 'c':
 				check_char(myarg, &count_char);
-
+				i++;
 				break;
 			case 's':
 				check_string(myarg, &count_char);
-
+				i++;
 				break;
 			case '%':
 				my_putchar('%');
 				count_char++;
-
+				i++;
 				break;
 			default:
 				my_putchar(format[i]);
