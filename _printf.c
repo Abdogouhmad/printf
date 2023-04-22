@@ -14,31 +14,29 @@
  */
 int _printf(const char *format, ...)
 {
-	int i;
+	int i = 0;
 	int count_char = 0;
 	va_list myarg;
 
 	if (format == NULL)
 		return (-1);
 	va_start(myarg, format);
-	for (i = 0; format[i] != '\0'; i++)
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			i++;
+			switch (format[i])
 			{
 			case 'c':
 				check_char(myarg, &count_char);
-				i++;
 				break;
 			case 's':
 				check_string(myarg, &count_char);
-				i++;
 				break;
 			case '%':
 				my_putchar('%');
 				count_char++;
-				i++;
 				break;
 			default:
 				my_putchar(format[i]);
@@ -51,7 +49,29 @@ int _printf(const char *format, ...)
 			my_putchar(format[i]);
 			count_char++;
 		}
+		i++;
 	}
 	va_end(myarg);
-	return (count_char);
+	return (count_char - 1);
+}
+
+
+
+int main(void)
+{
+	int len;
+
+	len = _printf("Let's try to printf a simple sentence.\n");
+	printf("Length of sentence: %d\n", len);
+
+	len = _printf("Character: %c\n", 'H');
+	printf("Length of sentence: %d\n", len);
+
+	len = _printf("String: %s\n", "Hello, World!");
+	printf("Length of sentence: %d\n", len);
+
+	len = _printf("Percent: %%\n");
+	printf("Length of sentence: %d\n", len);
+
+	return (0);
 }
