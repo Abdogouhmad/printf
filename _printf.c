@@ -42,8 +42,10 @@ int _printf(const char *format, ...)
 				check_string(myarg, &count_char);
 
 			else if (format[i] == '%')
-				check_percent(&count_char);
-
+			{
+				my_putchar('%');
+				count_char++;
+			}
 		}
 	}
 
