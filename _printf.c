@@ -54,24 +54,3 @@ int _printf(const char *format, ...)
 	va_end(myarg);
 	return (count_char - 1);
 }
-
-
-
-int main(void)
-{
-	int len;
-
-	len = _printf("Let's try to printf a simple sentence.\n");
-	printf("Length of sentence: %d\n", len);
-
-	len = _printf("Character: %c\n", 'H');
-	printf("Length of sentence: %d\n", len);
-
-	len = _printf("String: %s\n", "Hello, World!");
-	printf("Length of sentence: %d\n", len);
-
-	len = _printf("Percent: %%\n");
-	printf("Length of sentence: %d\n", len);
-
-	return (0);
-}
