@@ -12,31 +12,34 @@
  * Return: the number of characters printed
  * (excluding the terminating null byte).
  */
+
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int i;
 	int count_char = 0;
 	va_list myarg;
 
 	if (format == NULL)
 		return (-1);
 	va_start(myarg, format);
-	while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			switch (format[i])
+			switch (format[i + 1])
 			{
 			case 'c':
 				check_char(myarg, &count_char);
+				i++;
 				break;
 			case 's':
 				check_string(myarg, &count_char);
+				i++;
 				break;
 			case '%':
 				my_putchar('%');
 				count_char++;
+				i++;
 				break;
 			default:
 				my_putchar(format[i]);
@@ -49,7 +52,6 @@ int _printf(const char *format, ...)
 			my_putchar(format[i]);
 			count_char++;
 		}
-		i++;
 	}
 	va_end(myarg);
 	return (count_char);
