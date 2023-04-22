@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+/*by div-styl and adilma53*/
 
 /* 0_task headers */
 #include <unistd.h>
