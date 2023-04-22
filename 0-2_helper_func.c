@@ -8,8 +8,8 @@
 */
 void num_to_string(int num, int *count_char)
 {
-	int digits = 0;
-
+	int digits = 0, num_copy, i;
+	char numstr_buffer[digits + 1];
 	if (num == 0)
 	{
 		write(1, "0", 1);
@@ -23,7 +23,7 @@ void num_to_string(int num, int *count_char)
 		(*count_char)++;
 		num = -num;
 	}
-	int num_copy = num;
+	 num_copy = num;
 
 	while (num_copy != 0)
 	{
@@ -31,9 +31,7 @@ void num_to_string(int num, int *count_char)
 		digits++;
 	}
 
-	char numstr_buffer[digits + 1];
-
-	for (int i = digits - 1; i >= 0; i--)
+	for (i = digits - 1; i >= 0; i--)
 	{
 		numstr_buffer[i] = (num % 10) + '0';
 		num /= 10;

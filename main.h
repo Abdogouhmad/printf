@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
-
+#include <string.h>
 
 /* 0_task prototypes */
 int my_strlen(const char *str);
@@ -19,5 +19,6 @@ void check_percent(int *count_char);
 int _printf(const char *format, ...);
 /* 1_task prototypes */
 void num_to_string(int num, int *count_char);
+int switches(char casevalue, va_list myarg, int *counter);
 
 #endif
