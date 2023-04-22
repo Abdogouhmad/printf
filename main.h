@@ -17,7 +17,7 @@ void check_char(va_list myarg, int *count_char);
 void check_string(va_list myarg, int *count_char);
 void check_percent(int *count_char);
 int _printf(const char *format, ...);
-
-
+/* 1_task prototypes */
+void num_to_string(int num, int *count_char);
 
 #endif
