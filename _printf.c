@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			default:
-				my_putchar(format[i]);
+				my_putchar(format[i + 1]);
 				count_char++;
 				break;
 			}
