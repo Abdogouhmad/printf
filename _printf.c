@@ -52,5 +52,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(myarg);
-	return (count_char - 1);
+	return (count_char);
 }
