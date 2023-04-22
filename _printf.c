@@ -42,11 +42,12 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			default:
-				check_char(myarg, &count_char);
+				my_putchar(format[i]);
+				count_char++;
 				break;
 			}
 		}
-		else
+		else if (format[i] != '%')
 		{
 			my_putchar(format[i]);
 			count_char++;
