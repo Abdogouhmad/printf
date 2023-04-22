@@ -8,38 +8,39 @@
  *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
  *
- * Return: the number of characters printed (excluding the terminating null byte).
+ * Return: the number of characters printed
+ * (excluding the terminating null byte).
  */
 int _printf(const char *format, ...)
 {
-    int i;
-    int count_char = 0;
-    va_list myarg;
-    va_start(myarg, format);
+	int i;
+	int count_char = 0;
+	va_list myarg;
 
-    for (i = 0; format[i] != '\0'; i++)
-    {
-        if (format[i] != '%')
-        {
-            my_putchar(format[i]);
-            count_char++;
-        }
-        else
-        {
-            i++;
-            if (format[i] == 'c')
-                check_char(myarg, &count_char);
+	va_start(myarg, format);
 
-            else if (format[i] == 's')
-                check_string(myarg, &count_char);
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] != '%')
+		{
+			my_putchar(format[i]);
+			count_char++;
+		}
+		else
+		{
+			i++;
+			if (format[i] == 'c')
+				check_char(myarg, &count_char);
 
-            else if (format[i] == '%')
-                check_percent(&count_char);
+			else if (format[i] == 's')
+				check_string(myarg, &count_char);
 
-        }
-    }
+			else if (format[i] == '%')
+				check_percent(&count_char);
 
-    va_end(myarg);
-    return (count_char);
+		}
+	}
+
+	va_end(myarg);
+	return (count_char);
 }
-

@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*by div-styl and adilma53*/
 /**
  * my_strlen - calculate length of a string.
  *
@@ -9,13 +9,13 @@
  */
 int my_strlen(const char *str)
 {
-        int length = 0;
-        int i;
+	int length = 0;
+	int i;
 
-        for (i = 0; str[i] != '\0'; ++i)
-                length++;
+	for (i = 0; str[i] != '\0'; ++i)
+		length++;
 
-        return (length);
+	return (length);
 }
 
 
@@ -26,7 +26,7 @@ int my_strlen(const char *str)
  */
 void my_putchar(const char c)
 {
-        write(1, &c, 1);
+	write(1, &c, 1);
 }
 
 /**
@@ -36,8 +36,9 @@ void my_putchar(const char c)
  */
 void print_string(const char *string)
 {
-        int len = my_strlen(string);
-        write(1, string, len);
+	int len = my_strlen(string);
+
+	write(1, string, len);
 }
 
 
@@ -45,12 +46,13 @@ void print_string(const char *string)
  * check_char - writes a single character to standard output.
  *
  * @myarg: character to be written.
- * @count_char: pointer to integer that keeps track of number of characters written.
+ * @count_char: pointer to integer that keeps
+ * track of number of characters written.
  */
 void check_char(va_list myarg, int *count_char)
 {
-        my_putchar((char)va_arg(myarg, int));
-        (*count_char) += 1;
+	my_putchar((char)va_arg(myarg, int));
+	(*count_char) += 1;
 }
 
 
@@ -58,11 +60,13 @@ void check_char(va_list myarg, int *count_char)
  * check_string - writes a string to standard output.
  *
  * @myarg: the string to be written.
- * @count_char: pointer to integer that keeps track of number of characters written.
+ * @count_char: pointer to integer that keeps track
+ * of number of characters written.
  */
 void check_string(va_list myarg, int *count_char)
 {
-        char *str = va_arg(myarg, char *);
-        print_string(str);
-        (*count_char) += my_strlen(str);
+	char *str = va_arg(myarg, char *);
+
+	print_string(str);
+	(*count_char) += my_strlen(str);
 }
