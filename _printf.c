@@ -19,12 +19,8 @@ int _printf(const char *format, ...)
 	va_list myarg;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
-
 	va_start(myarg, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -56,7 +52,6 @@ int _printf(const char *format, ...)
 			count_char++;
 		}
 	}
-
 	va_end(myarg);
 	return (count_char);
 }
