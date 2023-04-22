@@ -16,8 +16,14 @@ int _printf(const char *format, ...)
 	int i;
 	int count_char = 0;
 	va_list myarg;
-
 	va_start(myarg, format);
+
+
+	if (format == NULL)
+	{
+		return (-1);
+	}
+
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
