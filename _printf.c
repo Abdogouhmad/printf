@@ -25,23 +25,21 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			i++;
+			switch (format[i])
 			{
 			case 'c':
 				check_char(myarg, &count_char);
-				i++;
 				break;
 			case 's':
 				check_string(myarg, &count_char);
-				i++;
 				break;
 			case '%':
 				my_putchar('%');
 				count_char++;
-				i++;
 				break;
 			default:
-				my_putchar(format[i + 1]);
+				my_putchar(format[i]);
 				count_char++;
 				break;
 			}
@@ -50,6 +48,7 @@ int _printf(const char *format, ...)
 		{
 			my_putchar(format[i]);
 			count_char++;
+			i++;
 		}
 	}
 	va_end(myarg);
