@@ -74,3 +74,4 @@ void check_string(va_list myarg, int *count_char)
 	print_string(str);
 	(*count_char) += my_strlen(str);
 }
+
