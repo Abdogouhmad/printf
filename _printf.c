@@ -54,7 +54,6 @@ void handle_char(char c, va_list args, int *count)
 	}
 }
 
-
 /**
  * _printf - prints formatted output to standard output.
  *
@@ -69,7 +68,6 @@ void handle_char(char c, va_list args, int *count)
 int _printf(const char *format, ...)
 {
 	int count = 0, i;
-
 	va_list args;
 
 	va_start(args, format);
@@ -86,7 +84,7 @@ int _printf(const char *format, ...)
 	va_end(args);
 	if (format[i - 1] == '%')
 	{
-		fprintf(stderr, "error: format string ends with '%%'\n");
+		write(2, "error: format string ends with '%'\n", 35);
 		return (-1);
 	}
 	return (count);
