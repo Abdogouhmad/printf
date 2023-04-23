@@ -15,44 +15,44 @@
 
 int _printf(const char *format, ...)
 {
-  int i;
-  int count_char = 0;
-  va_list myarg;
+	int i;
+	int count_char = 0;
+	va_list myarg;
 
-  if (format == NULL)
-    return (-1);
-  va_start(myarg, format);
-  for (i = 0; format[i] != '\0'; i++)
-  {
-    if (format[i] == '%')
-    {
-      switch (format[i + 1])
-      {
-      case 'c':
-        check_char(myarg, &count_char);
-        i++;
-        break;
-      case 's':
-        check_string(myarg, &count_char);
-        i++;
-        break;
-      case '%':
-        my_putchar('%');
-        count_char++;
-        i++;
-        break;
-      default:
-        my_putchar(format[i]);
-        count_char++;
-        break;
-      }
-    }
-    else if (format[i] != '%')
-    {
-      my_putchar(format[i]);
-      count_char++;
-    }
-  }
-  va_end(myarg);
-  return (count_char);
+	if (format == NULL)
+		return (-1);
+	va_start(myarg, format);
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			switch (format[i + 1])
+			{
+			case 'c':
+				check_char(myarg, &count_char);
+				i++;
+				break;
+			case 's':
+				check_string(myarg, &count_char);
+				i++;
+				break;
+			case '%':
+				my_putchar('%');
+				count_char++;
+				i++;
+				break;
+			default:
+				my_putchar(format[i]);
+				count_char++;
+				break;
+			}
+		}
+		else if (format[i] != '%')
+		{
+			my_putchar(format[i]);
+			count_char++;
+		}
+	}
+	va_end(myarg);
+	return (count_char);
 }
