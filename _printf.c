@@ -1,5 +1,18 @@
 #include "main.h"
 
+/**
+ * check_percent - ............
+ *
+ * @count_char: .........
+ *
+ * Return: ...........
+ */
+void check_percent(int *count_char)
+{
+	my_putchar('%');
+	(*count_char)++;
+}
+
 
 /**
  * _printf - prints formatted output to standard output.
