@@ -1,6 +1,47 @@
-#include "main.h"
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
+/**
+ * handle_char - ...
+ *
+ * @c: ....
+ * @args: ....
+ * @count: ....
+ *
+ * Return: ....
+ */
+void handle_char(char c, va_list args, int *count)
+{
+	switch (c)
+	{
+	case 'c':
+	{
+		char c = va_arg(args, int);
 
+		if (c == '\n')
+			write(1, "\n", 1);
+		else
+			write(1, &c, 1);
+		(*count)++;
+		break;
+	}
+	case 's':
+	{
+		char *s = va_arg(args, char *);
+
+		if (s == NULL)
+			write(1, "(null)", 6);
+		else
+			write(1, s, strlen(s));
+		(*count) += strlen(s);
+		break;
+	}
+	default:
+		break;
+	}
+}
 /**
  * _printf - prints formatted output to standard output.
  *
@@ -12,47 +53,27 @@
  * Return: the number of characters printed
  * (excluding the terminating null byte).
  */
-
 int _printf(const char *format, ...)
 {
-	int i;
-	int count_char = 0;
-	va_list myarg;
+	int count = 0, i;
 
-	if (format == NULL)
-		return (-1);
-	va_start(myarg, format);
+	va_list args;
+
+	va_start(args, format);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
-			{
-			case 'c':
-				check_char(myarg, &count_char);
-				i++;
-				break;
-			case 's':
-				check_string(myarg, &count_char);
-				i++;
-				break;
-			case '%':
-				my_putchar('%');
-				count_char++;
-				i++;
-				break;
-			default:
-				my_putchar(format[i]);
-				count_char++;
-				break;
-			}
+			handle_char(format[++i], args, &count);
 		}
-		else if (format[i] != '%')
+		else
 		{
-			my_putchar(format[i]);
-			count_char++;
+			write(1, &format[i], 1);
+			count++;
 		}
 	}
-	va_end(myarg);
-	return (count_char);
+
+	va_end(args);
+	return (count);
 }
