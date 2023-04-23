@@ -27,14 +27,15 @@ for (i = 0; format[i] != '\0'; i++)
 	if (format[i] == '%')
 	{
 		switches(format[i + 1], myarg, &count_char);
+		i++;
 	}
-	else if (format[i] != '%')
+	else
 	{
 		my_putchar(format[i]);
 		count_char++;
 	}
+
 }
 va_end(myarg);
 return (count_char);
 }
-

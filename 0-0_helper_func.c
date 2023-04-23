@@ -52,8 +52,11 @@ void print_string(const char *string)
  */
 void check_char(va_list myarg, int *count_char)
 {
-	my_putchar((char)va_arg(myarg, int));
-	(*count_char) += 1;
+	char s;
+
+	s = (char)va_arg(myarg, int);
+	my_putchar(s);
+	(*count_char)++;
 }
 
 

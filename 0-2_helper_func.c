@@ -9,8 +9,8 @@
  */
 void num_to_string(int *count_char, int num)
 {
-		int digits = 0, num_copy, i;
-		char numstr_buffer[MAX_DIGITS + 1];
+	int digits = 0, num_copy, i;
+	char numstr_buffer[MAX_DIGITS + 1];
 
 if (num == 0)
 {
@@ -43,4 +43,16 @@ numstr_buffer[digits] = '\0';
 
 write(1, numstr_buffer, strlen(numstr_buffer));
 (*count_char) += strlen(numstr_buffer);
+}
+
+/**
+ * 
+ * 
+ * 
+ * 
+*/
+void check_percent(int *count_char)
+{
+    my_putchar('%');
+    (*count_char)++;
 }

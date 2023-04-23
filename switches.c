@@ -7,10 +7,10 @@
  * @counter: counter to count characters printed
  * Return: void
 */
-void switches(char casevalue, va_list myarg, int *counter)
+void switches(char c, va_list myarg, int *counter)
 {
-	switch (casevalue)
-	{
+switch (c)
+{
 	case 'c':
 		check_char(myarg, counter);
 		break;
@@ -18,16 +18,17 @@ void switches(char casevalue, va_list myarg, int *counter)
 		check_string(myarg, counter);
 		break;
 	case '%':
-		my_putchar('%');
-		(*counter)++;
+		check_percent(counter);
 		break;
 	case 'd':
+		num_to_string(counter, va_arg(myarg, int));
+		break;
 	case 'i':
 		num_to_string(counter, va_arg(myarg, int));
 		break;
 	default:
-		my_putchar(casevalue);
+		my_putchar(c);
 		(*counter)++;
 		break;
-	}
+}
 }
