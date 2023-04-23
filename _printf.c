@@ -12,7 +12,7 @@
  *
  * Return: ....
  */
-int handle_char(char c, va_list args, int *count)
+void handle_char(char c, va_list args, int *count)
 {
 	switch (c)
 	{
@@ -46,13 +46,11 @@ int handle_char(char c, va_list args, int *count)
 	}
 	case '\n':
 	{
-		return (-1);
 		break;
 	}
 	default:
 		break;
 	}
-	return (0);
 }
 /**
  * _printf - prints formatted output to standard output.
