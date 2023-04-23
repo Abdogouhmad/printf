@@ -1,14 +1,14 @@
 #include "main.h"
-
+/*by div-styl and adilma35*/
 
 /**
- * _strlen - calculate length of a string.
+ * my_strlen - calculate length of a string.
  *
  * @str: pointer to the string.
  *
  * Return: length of a string (excludes null charachter).
  */
-int _strlen(const char *str)
+int my_strlen(const char *str)
 {
 	int length = 0;
 	int i;
@@ -21,11 +21,9 @@ int _strlen(const char *str)
 
 
 /**
- * my_putchar - write a single character to standard output.
- *
+ * my_putchar -write a single character to standard output.
  * @c: the character to be written.
- *
- * Return: write.
+ * Return: the string/ character
  */
 int my_putchar(char c)
 {
@@ -39,7 +37,7 @@ int my_putchar(char c)
  */
 void print_string(const char *string)
 {
-	int len = _strlen(string);
+	int len = my_strlen(string);
 
 	write(1, string, len);
 }
@@ -73,14 +71,6 @@ void check_string(va_list myarg, int *count_char)
 {
 	char *str = va_arg(myarg, char *);
 
-	if (str == NULL)
-	{
-		print_string("(null)");
-		(*count_char) += 6;
-	}
-	else
-	{
-		print_string(str);
-		(*count_char) += _strlen(str);
-	}
+	print_string(str);
+	(*count_char) += my_strlen(str);
 }

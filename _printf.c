@@ -1,25 +1,12 @@
 #include "main.h"
-
-/**
- * check_percent - ............
- *
- * @count_char: .........
- *
- * Return: ...........
- */
-void check_percent(int *count_char)
-{
-	my_putchar('%');
-	(*count_char)++;
-}
-
+/*by div-styl and adilma53*/
 
 /**
  * _printf - prints formatted output to standard output.
  *
  * @format: a string containing format specifiers that control the output.
- * Supported format specifiers are %c, %s, and %%.
- * Any other characters are printed as-is.
+ *          Supported format specifiers are %c, %s, and %%.
+ *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
  *
  * Return: the number of characters printed
@@ -34,28 +21,41 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(myarg, format);
-
-	for (i = 0; format[i] != '\0'; i++)
+for (i = 0; format[i] != '\0'; i++)
+{
+	if (format[i] == '%')
 	{
-		if (format[i] == '%')
-		{
-			if (format[i + 1] == '\0')
-			{
-				return (-1);
-			}
-			switches(format[i + 1], myarg, &count_char);
-			i++;
-		}
-		else
-		{
-			my_putchar(format[i]);
-			count_char++;
-		}
+		switches(format[i + 1], myarg, &count_char);
+		i++;
+	}
+	else
+	{
+		my_putchar(format[i]);
+		count_char++;
 	}
 
-	va_end(myarg);
+}
+va_end(myarg);
+return (count_char);
+}
 
-	return (count_char);
+int main(void)
+{
+int len;
+int len2;
+
+
+len = _printf("Let's try to printf a simple sentence.\n");
+len2 = printf("Let's try to printf a simple sentence.\n");
+
+_printf("Length:[%d, %i]\n", len, len2);
+
+_printf("Negative:[%d]\n", -762534);
+_printf("Character:[%c]\n", 'H');
+_printf("String:[%s]\n", "I am a string !");
+len = _printf("Percent:[%%]\n");
+len2 = printf("Percent:[%%]\n");
+_printf("Len:[%d]\n", len);
+return (0);
 }
