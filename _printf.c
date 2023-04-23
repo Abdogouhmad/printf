@@ -4,16 +4,27 @@
 #include <string.h>
 
 /**
- * handle_char - ...
+ * handle_char - handles a single format specifier character
  *
- * @c: ....
- * @args: ....
- * @count: ....
+ * @c: the format specifier character to handle
+ * @args: the variable argument list
+ * @count: a pointer to the output character count
  *
- * Return: ....
+ * This function handles the conversion of a single format specifier character,
+ * writing the corresponding output to standard output and updating the output
+ * character count.
+ */
+/**
+ * handle_char - handles a single character conversion specifier
+ *
+ * @c: the conversion specifier character
+ * @args: the va_list of arguments
+ * @count: a pointer to the running count of printed characters
  */
 void handle_char(char c, va_list args, int *count)
 {
+	char buf[2];
+
 	switch (c)
 	{
 	case 'c':
@@ -40,7 +51,9 @@ void handle_char(char c, va_list args, int *count)
 	}
 	case '%':
 	{
-		write(1, "%", 1);
+		buf[0] = '%';
+		buf[1] = '\0';
+		write(1, buf, 1);
 		(*count)++;
 		break;
 	}
@@ -52,6 +65,8 @@ void handle_char(char c, va_list args, int *count)
 		break;
 	}
 }
+
+
 /**
  * _printf - prints formatted output to standard output.
  *
@@ -60,8 +75,8 @@ void handle_char(char c, va_list args, int *count)
  *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
  *
- * Return: the number of characters printed
- * (excluding the terminating null byte).
+ * Return: the number of characters printed (excluding the terminating null byte),
+ * or -1 if an error occurs.
  */
 int _printf(const char *format, ...)
 {
@@ -75,15 +90,25 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+
 			handle_char(format[++i], args, &count);
 		}
 		else
 		{
+
 			write(1, &format[i], 1);
 			count++;
 		}
 	}
 
 	va_end(args);
-	return (count);
+
+
+	if (format[i - 1] == '%')
+	{
+		fprintf(stderr, "error: format string ends with '%%'\n");
+		return -1;
+	}
+
+	return count;
 }
