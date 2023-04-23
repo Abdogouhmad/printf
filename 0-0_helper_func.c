@@ -1,5 +1,5 @@
 #include "main.h"
-/
+/*by div-styl and adilma35*/
 
 /**
  * my_strlen - calculate length of a string.
@@ -21,9 +21,9 @@ int my_strlen(const char *str)
 
 
 /**
- * my_putchar - write a single character to standard output.
- *
+ * my_putchar -write a single character to standard output.
  * @c: the character to be written.
+ * Return: the string/ character
  */
 int my_putchar(char c)
 {
