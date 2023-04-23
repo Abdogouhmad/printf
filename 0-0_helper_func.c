@@ -68,6 +68,14 @@ void check_string(va_list myarg, int *count_char)
 {
 	char *str = va_arg(myarg, char *);
 
-	print_string(str);
-	(*count_char) += my_strlen(str);
+	if (str == NULL)
+	{
+		print_string("(null)");
+		(*count_char) += 6;
+	}
+	else
+	{
+		print_string(str);
+		(*count_char) += my_strlen(str);
+	}
 }

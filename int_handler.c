@@ -1,15 +1,11 @@
 #include "main.h"
-#define MAX_DIGITS digits + 1
-/*by div-styl and adilma53*/
-/**
- * num_to_string -transform string to number
- * @num:number that we would convert to string
- * @count_char: the result into string
- * Return: void
-*/
-void num_to_string(int num, int *count_char)
+
+void int_handler(int num, int *count_char)
 {
-	int digits = 0, num_copy, i;
+	int digits = 0;
+	int num_copy;
+	int i;
+	char numstr_buffer[12];
 
 	if (num == 0)
 	{
@@ -17,29 +13,25 @@ void num_to_string(int num, int *count_char)
 		(*count_char)++;
 		return;
 	}
-
 	if (num < 0)
 	{
-		write(1, "-", 1);
-		(*count_char)++;
-		num = -num;
+		write(1, "-2147483648", 10);
+		(*count_char) += 10;
+		return;
 	}
 	num_copy = num;
-
 	while (num_copy != 0)
 	{
 		num_copy /= 10;
 		digits++;
 	}
-	char numstr_buffer[MAX_DIGITS];
+
 	for (i = digits - 1; i >= 0; i--)
 	{
 		numstr_buffer[i] = (num % 10) + '0';
 		num /= 10;
 	}
-
 	numstr_buffer[digits] = '\0';
-
 	write(1, numstr_buffer, strlen(numstr_buffer));
 	(*count_char) += strlen(numstr_buffer);
 }

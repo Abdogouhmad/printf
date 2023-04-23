@@ -17,20 +17,18 @@ int _printf(const char *format, ...)
 {
 	int i;
 	int count_char = 0;
+	int num;
 	va_list myarg;
 
-	if (format == NULL)
-		return (-1);
+
 	va_start(myarg, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			
-			switches(format[i + 1], myarg, &count_char);
-			/*switch (format[i + 1])
+			switch (format[i + 1])
 			{
-			case 'c':
+			/*case 'c':
 				check_char(myarg, &count_char);
 				i++;
 				break;
@@ -42,18 +40,17 @@ int _printf(const char *format, ...)
 				my_putchar('%');
 				count_char++;
 				i++;
-				break;
+				break;*/
 			case 'd':
-				num_to_string(myarg, &count_char);
-				break;
 			case 'i':
-				num_to_string(myarg, &count_char);
+				num = va_arg(myarg, int);
+				int_handler(num, &count_char);
 				break;
 			default:
 				my_putchar(format[i]);
 				count_char++;
 				break;
-			}*/
+			}
 		}
 		else if (format[i] != '%')
 		{
