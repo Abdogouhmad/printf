@@ -1,5 +1,15 @@
 #include "main.h"
 
+
+/**
+ * int_handler - converts an integer to a string and writes it to stdout
+ *
+ * @num: the integer to be converted
+ * @count_char: a pointer to the count of characters written
+ *
+ * Return: void
+ */
+
 void int_handler(int num, int *count_char)
 {
 	int digits = 0;

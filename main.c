@@ -1,6 +1,16 @@
 
 #include "main.h"
 
+
+
+/**
+ * main - ..
+ *
+ * @void: ..
+ *
+ * Return: ..
+ */
+
 int main(void)
 {
 

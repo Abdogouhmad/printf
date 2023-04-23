@@ -24,6 +24,8 @@ int my_strlen(const char *str)
  * my_putchar - write a single character to standard output.
  *
  * @c: the character to be written.
+ *
+ * Return: write.
  */
 int my_putchar(char c)
 {
