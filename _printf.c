@@ -43,9 +43,6 @@ void handle_char(char c, va_list args, int *count)
 		(*count)++;
 		break;
 	}
-	case '\n':
-		break;
-
 	default:
 		break;
 	}
