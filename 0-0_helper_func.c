@@ -2,21 +2,21 @@
 
 
 /**
- * my_strlen - calculate length of a string.
+ * _strlen - calculate length of a string.
  *
  * @str: pointer to the string.
  *
  * Return: length of a string (excludes null charachter).
  */
-int my_strlen(const char *str)
+int _strlen(const char *str)
 {
-	int length = 0;
-	int i;
+        int length = 0;
+        int i;
 
-	for (i = 0; str[i] != '\0'; ++i)
-		length++;
+        for (i = 0; str[i] != '\0'; ++i)
+                length++;
 
-	return (length);
+        return (length);
 }
 
 
@@ -29,7 +29,7 @@ int my_strlen(const char *str)
  */
 int my_putchar(char c)
 {
-	return (write(1, &c, 1));
+        return (write(1, &c, 1));
 }
 
 /**
@@ -39,9 +39,9 @@ int my_putchar(char c)
  */
 void print_string(const char *string)
 {
-	int len = my_strlen(string);
+        int len = _strlen(string);
 
-	write(1, string, len);
+        write(1, string, len);
 }
 
 
@@ -54,8 +54,8 @@ void print_string(const char *string)
  */
 void check_char(va_list myarg, int *count_char)
 {
-	my_putchar((char)va_arg(myarg, int));
-	(*count_char) += 1;
+        my_putchar((char)va_arg(myarg, int));
+        (*count_char) += 1;
 }
 
 
@@ -68,16 +68,16 @@ void check_char(va_list myarg, int *count_char)
  */
 void check_string(va_list myarg, int *count_char)
 {
-	char *str = va_arg(myarg, char *);
+        char *str = va_arg(myarg, char *);
 
-	if (str == NULL)
-	{
-		print_string("(null)");
-		(*count_char) += 6;
-	}
-	else
-	{
-		print_string(str);
-		(*count_char) += my_strlen(str);
-	}
+        if (str == NULL)
+        {
+                print_string("(null)");
+                (*count_char) += 6;
+        }
+        else
+        {
+                print_string(str);
+                (*count_char) += _strlen(str);
+        }
 }

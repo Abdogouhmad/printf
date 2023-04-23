@@ -23,11 +23,17 @@ void int_handler(int num, int *count_char)
 		(*count_char)++;
 		return;
 	}
+	if (num == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		(*count_char) += 11;
+		return;
+	}
 	if (num < 0)
 	{
-		write(1, "-2147483648", 10);
-		(*count_char) += 10;
-		return;
+		write(1, "-", 1);
+		(*count_char)++;
+		num = -num;
 	}
 	num_copy = num;
 	while (num_copy != 0)
@@ -42,6 +48,6 @@ void int_handler(int num, int *count_char)
 		num /= 10;
 	}
 	numstr_buffer[digits] = '\0';
-	write(1, numstr_buffer, strlen(numstr_buffer));
-	(*count_char) += strlen(numstr_buffer);
+	write(1, numstr_buffer, _strlen(numstr_buffer));
+	(*count_char) += _strlen(numstr_buffer);
 }

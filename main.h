@@ -17,7 +17,7 @@
 /* #define MAX_DIGITS 10 */
 /*prototypes*/
 
-int my_strlen(const char *str);
+int _strlen(const char *str);
 int my_putchar(char c);
 void print_string(const char *string);
 void check_char(va_list myarg, int *count_char);
