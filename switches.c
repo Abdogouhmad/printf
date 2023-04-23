@@ -2,7 +2,7 @@
 /*by div-styl and adilma53*/
 /**
  * switches - checks for valid arguments
- * @casevalue: argument passed to function
+ * @c: argument passed to function
  * @myarg: argument passed to function
  * @counter: counter to count characters printed
  * Return: void

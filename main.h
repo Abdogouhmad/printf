@@ -1,15 +1,16 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+/*by div-styl and adilma53*/
+/*libraries*/
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
-
+/*definers*/
 #define MAX_DIGITS 10
-
+/*prototypes*/
 int my_strlen(const char *str);
 int my_putchar(char c);
 void print_string(const char *string);
@@ -19,5 +20,4 @@ void check_percent(int *count_char);
 void num_to_string(int *count_char, int num);
 void switches(char c, va_list myarg, int *counter);
 int _printf(const char *format, ...);
-
 #endif

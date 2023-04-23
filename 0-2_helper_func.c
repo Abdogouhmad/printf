@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*by div-styl and adilma53*/
 /**
  * num_to_string - transform number to string
  * @count_char: the result into string
@@ -46,13 +46,12 @@ write(1, numstr_buffer, strlen(numstr_buffer));
 }
 
 /**
- * 
- * 
- * 
- * 
+ * check_percent -check if the char is %
+ * @count_char: the result into string
+ * Return: void
 */
 void check_percent(int *count_char)
 {
-    my_putchar('%');
-    (*count_char)++;
+	my_putchar('%');
+	(*count_char)++;
 }
