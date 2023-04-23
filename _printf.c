@@ -59,6 +59,7 @@ void handle_char(char c, va_list args, int *count)
  * Return: .....
  * or -1 if an error occurs.
  */
+
 int _printf(const char *format, ...)
 {
 	int count = 0, i;
@@ -80,10 +81,11 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-	va_end(args);
 	if (format[i - 1] == '%')
 	{
-		return (-1);
+		handle_char('%', args, &count);
 	}
+
+	va_end(args);
 	return (count);
 }
