@@ -29,13 +29,19 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 			case 'd':
+				num = va_arg(myarg, int);
+				int_handler(num, &count_char);
+				i++;
+				break;
 			case 'i':
 				num = va_arg(myarg, int);
 				int_handler(num, &count_char);
+				i++;
 				break;
 			default:
 				my_putchar(format[i]);
 				count_char++;
+				i++;
 				break;
 			}
 		}
