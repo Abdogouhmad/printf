@@ -81,6 +81,10 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
+	if (format[i - 1] == '%')
+	{
+		handle_char('%', args, &count);
+	}
 
 	va_end(args);
 	return (count);
