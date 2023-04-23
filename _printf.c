@@ -82,10 +82,6 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
-	if (format[i - 1] == '%')
-	{
-		write(2, "error: format string ends with '%'\n", 35);
-		return (-1);
-	}
+
 	return (count);
 }
