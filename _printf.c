@@ -13,8 +13,6 @@
  */
 void handle_char(char c, va_list args, int *count)
 {
-	char buf[2];
-
 	switch (c)
 	{
 	case 'c':
@@ -41,14 +39,10 @@ void handle_char(char c, va_list args, int *count)
 	}
 	case '%':
 	{
-		buf[0] = '%';
-		buf[1] = '\0';
-		write(1, buf, 1);
+		write(1, "%", 1);
 		(*count)++;
 		break;
 	}
-	case '\n':
-		break;
 	default:
 		break;
 	}
