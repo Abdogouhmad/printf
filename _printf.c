@@ -12,7 +12,7 @@
  *
  * Return: ....
  */
-void handle_char(char c, va_list args, int *count)
+int handle_char(char c, va_list args, int *count)
 {
 	switch (c)
 	{
@@ -38,9 +38,21 @@ void handle_char(char c, va_list args, int *count)
 		(*count) += strlen(s);
 		break;
 	}
+	case '%':
+	{
+		write(1, "%", 1);
+		(*count)++;
+		break;
+	}
+	case '\n':
+	{
+		return (-1);
+		break;
+	}
 	default:
 		break;
 	}
+	return (0);
 }
 /**
  * _printf - prints formatted output to standard output.
