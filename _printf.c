@@ -67,25 +67,29 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
+	if (format == NULL)
 		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
+		{
+			/*Handle %% and %<space> special cases*/
+			if (format[i + 1] == '%' || format[i + 1] == ' ')
+			{
+				write(1, &format[i], 1);
+				count++;
+				continue;
+			}
+
 			handle_char(format[++i], args, &count);
+		}
 		else
 		{
 			write(1, &format[i], 1);
 			count++;
 		}
 	}
-	if (format[i - 1] == '%')
-	{
-		handle_char('%', args, &count);
-	}
 
 	va_end(args);
-	return (count);
+	return count;
 }
