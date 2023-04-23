@@ -41,6 +41,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			if (format[i + 1] == '\0')
+			{
+				return (-1);
+			}
 			switches(format[i + 1], myarg, &count_char);
 			i++;
 		}
