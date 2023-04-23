@@ -22,65 +22,38 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(myarg, format);
-	for (i = 0; format[i] != '\0'; i++)
+for (i = 0; format[i] != '\0'; i++)
+{
+	if (format[i] == '%')
 	{
-		if (format[i] == '%')
-		{
-			
-			switches(format[i + 1], myarg, &count_char);
-			/*switch (format[i + 1])
-			{
-			case 'c':
-				check_char(myarg, &count_char);
-				i++;
-				break;
-			case 's':
-				check_string(myarg, &count_char);
-				i++;
-				break;
-			case '%':
-				my_putchar('%');
-				count_char++;
-				i++;
-				break;
-			case 'd':
-				num_to_string(myarg, &count_char);
-				break;
-			case 'i':
-				num_to_string(myarg, &count_char);
-				break;
-			default:
-				my_putchar(format[i]);
-				count_char++;
-				break;
-			}*/
-		}
-		else if (format[i] != '%')
-		{
-			my_putchar(format[i]);
-			count_char++;
-		}
+		switches(format[i + 1], myarg, &count_char);
 	}
-	va_end(myarg);
-	return (count_char);
+	else if (format[i] != '%')
+	{
+		my_putchar(format[i]);
+		count_char++;
+	}
+}
+va_end(myarg);
+return (count_char);
 }
 
 int main(void)
 {
-    int len;
-	int len2;
+int len;
+int len2;
 
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
+len = _printf("Let's try to printf a simple sentence.\n");
+len2 = printf("Let's try to printf a simple sentence.\n");
 
-    _printf("Length:[%d, %i]\n", len, len2);
- 
-    _printf("Negative:[%d]\n", -762534);
-    _printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    return (0);
+_printf("Length:[%d, %i]\n", len, len2);
+
+_printf("Negative:[%d]\n", -762534);
+_printf("Character:[%c]\n", 'H');
+_printf("String:[%s]\n", "I am a string !");
+len = _printf("Percent:[%%]\n");
+len2 = printf("Percent:[%%]\n");
+_printf("Len:[%d]\n", len);
+return (0);
 }

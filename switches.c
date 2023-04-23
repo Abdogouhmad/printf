@@ -1,11 +1,11 @@
 #include "main.h"
 /*by div-styl and adilma53*/
 /**
- * 
- * 
- * 
- * 
- * 
+ * switches - checks for valid arguments
+ * @casevalue: argument passed to function
+ * @myarg: argument passed to function
+ * @counter: counter to count characters printed
+ * Return: void
 */
 void switches(char casevalue, va_list myarg, int *counter)
 {
@@ -23,8 +23,8 @@ void switches(char casevalue, va_list myarg, int *counter)
 		break;
 	case 'd':
 	case 'i':
-        num_to_string(counter, va_arg(myarg, int));
-        break;
+		num_to_string(counter, va_arg(myarg, int));
+		break;
 	default:
 		my_putchar(casevalue);
 		(*counter)++;
