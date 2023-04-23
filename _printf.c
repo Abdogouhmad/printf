@@ -3,17 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-/**
- * handle_char - handles a single format specifier character
- *
- * @c: the format specifier character to handle
- * @args: the variable argument list
- * @count: a pointer to the output character count
- *
- * This function handles the conversion of a single format specifier character,
- * writing the corresponding output to standard output and updating the output
- * character count.
- */
+
 /**
  * handle_char - handles a single character conversion specifier
  *
@@ -58,9 +48,7 @@ void handle_char(char c, va_list args, int *count)
 		break;
 	}
 	case '\n':
-	{
 		break;
-	}
 	default:
 		break;
 	}
@@ -75,7 +63,7 @@ void handle_char(char c, va_list args, int *count)
  *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
  *
- * Return: the number of characters printed (excluding the terminating null byte),
+ * Return: .....
  * or -1 if an error occurs.
  */
 int _printf(const char *format, ...)
@@ -85,30 +73,21 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
-		{
-
 			handle_char(format[++i], args, &count);
-		}
 		else
 		{
-
 			write(1, &format[i], 1);
 			count++;
 		}
 	}
-
 	va_end(args);
-
-
 	if (format[i - 1] == '%')
 	{
 		fprintf(stderr, "error: format string ends with '%%'\n");
-		return -1;
+		return (-1);
 	}
-
-	return count;
+	return (count);
 }
