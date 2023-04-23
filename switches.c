@@ -21,8 +21,7 @@ void switches(char c, va_list myarg, int *counter)
 		check_string(myarg, counter);
 		break;
 	case '%':
-		my_putchar(c);
-		(*counter)++;
+		check_percent(counter);
 		break;
 	default:
 		my_putchar(c);
