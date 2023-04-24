@@ -9,17 +9,14 @@
  */
 void handle_char(char c, va_list args, int *count)
 {
-	switch (c)
+	if (c == 'c')
 	{
-	case 'c':
-	{
-		char character = va_arg(args, int);
+		char ch = va_arg(args, int);
 
-		write(1, &character, 1);
+		write(1, &ch, 1);
 		(*count)++;
-		break;
 	}
-	case 's':
+	else if (c == 's')
 	{
 		char *s = va_arg(args, char *);
 
@@ -28,33 +25,27 @@ void handle_char(char c, va_list args, int *count)
 
 		write(1, s, strlen(s));
 		(*count) += strlen(s);
-		break;
 	}
-	case 'd':
-	case 'i':
+	else if (c == 'd' || c == 'i')
 	{
-		int numbers = va_arg(args, int);
-		char numbers_str[12];
-		char *string_ptr;
+		int num = va_arg(args, int);
+		char num_str[12];
+		char *str_ptr;
 
-		string_ptr = int_to_str(numbers, numbers_str);
+		str_ptr = int_to_str(num, num_str);
 
-		write(1, string_ptr, strlen(string_ptr));
-		(*count) += strlen(string_ptr);
-		break;
+		write(1, str_ptr, strlen(str_ptr));
+		(*count) += strlen(str_ptr);
 	}
-	case '%':
+	else if (c == '%')
 	{
 		write(1, "%", 1);
 		(*count)++;
-		break;
 	}
-	default:
+	else
 	{
 		write(1, "%", 1);
 		write(1, &c, 1);
 		(*count) += 2;
-		break;
-	}
 	}
 }
