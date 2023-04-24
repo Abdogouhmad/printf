@@ -38,8 +38,7 @@ int num_len(int num)
 /**
  * int_to_str - converts an integer to a string
  *
- * @num: the integer to convert
- * @str: a buffer to store the resulting string
+ * @n: the integer to convert
  * Return: a pointer to the resulting string
  */
 int int_to_str(int n)
