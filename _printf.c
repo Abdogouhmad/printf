@@ -17,9 +17,9 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
-
 	va_start(args, format);
+
+	int count = 0;
 
 	while (*format != '\0')
 	{
@@ -51,6 +51,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				va_end(args);
 				return (-1);
 			}
 		}
