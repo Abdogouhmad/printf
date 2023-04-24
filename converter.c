@@ -7,24 +7,23 @@
  */
 int number_to_binary(unsigned int num)
 {
-	char cara;
-	int i = 0;
+	char digit;
+	int count;
 
 	if (num == 0)
 	{
 		write(1, "0", 1);
 		return (1);
 	}
-	if (num > 1)
-	{
-		i++;
-		number_to_binary(num / 2);
-	}
 
-	if (num % 2 == 0)
-	cara = '0';
-	else
-	cara = '1';
-	write(1, &cara, 1);
-	return (i);
+	count = 0;
+
+	if (num > 1)
+		count += number_to_binary(num / 2);
+
+	digit = (num % 2) ? '1' : '0';
+	write(1, &digit, 1);
+	count++;
+
+	return (count);
 }
