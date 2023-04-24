@@ -1,5 +1,16 @@
 #include "main.h"
 /*by div-styl and adilma53*/
+
+/**
+ * my_putchar -write a single character to standard output.
+ * @c: the character to be written.
+ * Return: the string/ character
+ */
+int my_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
 /**
  * handle_char - handles a single character conversion specifier
  *

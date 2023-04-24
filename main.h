@@ -13,11 +13,7 @@
 int my_putchar(char c);
 int num_len(int num);
 int int_to_str(int n);
-int my_strlen(const char *str);
 void check_percent(int *count_char);
-void print_string(const char *string);
-void check_char(va_list myarg, int *count_char);
-void check_string(va_list myarg, int *count_char);
 void handle_char(char c, va_list args, int *count);
 int _printf(const char *format, ...);
 #endif
