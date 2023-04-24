@@ -1,52 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <string.h>
-
-
-/**
- * handle_char - handles a single character conversion specifier
- *
- * @c: the conversion specifier character
- * @args: the va_list of arguments
- * @count: a pointer to the running count of printed characters
- */
-void handle_char(char c, va_list args, int *count)
-{
-	switch (c)
-	{
-	case 'c':
-	{
-		char c = va_arg(args, int);
-
-		if (c == '\n')
-			write(1, "\n", 1);
-		else
-			write(1, &c, 1);
-		(*count)++;
-		break;
-	}
-	case 's':
-	{
-		char *s = va_arg(args, char *);
-
-		if (s == NULL)
-			write(1, "(null)", 6);
-		else
-			write(1, s, strlen(s));
-		(*count) += strlen(s);
-		break;
-	}
-	case '%':
-	{
-		write(1, "%", 1);
-		(*count)++;
-		break;
-	}
-	default:
-		break;
-	}
-}
 
 /**
  * _printf - prints formatted output to standard output.
@@ -62,26 +16,51 @@ void handle_char(char c, va_list args, int *count)
 
 int _printf(const char *format, ...)
 {
-	int count = 0, i;
 	va_list args;
+	int count = 0;
 
 	va_start(args, format);
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	for (i = 0; format[i] != '\0'; i++)
+	while (*format != '\0')
 	{
-		if (format[i] == '%')
-			handle_char(format[++i], args, &count);
+		if (*format == '%')
+		{
+			format++;
+			if (*format == 'c')
+			{
+				char c = (char)va_arg(args, int);
+
+				putchar(c);
+				count++;
+			}
+			else if (*format == 's')
+			{
+				char *s = va_arg(args, char*);
+
+				while (*s != '\0')
+				{
+					putchar(*s);
+					s++;
+					count++;
+				}
+			}
+			else if (*format == '%')
+			{
+				putchar('%');
+				count++;
+			}
+			else
+			{
+				return (-1);
+			}
+		}
 		else
 		{
-			write(1, &format[i], 1);
+			putchar(*format);
 			count++;
 		}
+		format++;
 	}
-
 	va_end(args);
 	return (count);
 }
