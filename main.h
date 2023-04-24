@@ -17,5 +17,5 @@ void check_percent(int *count_char);
 void handle_char(char c, va_list args, int *count);
 int _printf(const char *format, ...);
 /*advance prototypes*/
-void number_to_binary(unsigned int num);
+int number_to_binary(unsigned int num);
 #endif

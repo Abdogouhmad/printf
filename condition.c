@@ -46,7 +46,7 @@ void handle_char(char c, va_list args, int *count)
 	{
 		unsigned int num = va_arg(args, unsigned int);
 
-		number_to_binary(num);
+		(*count) += number_to_binary(num);
 	}
 	else if (c == '%')
 	{
