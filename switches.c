@@ -29,13 +29,7 @@ void handle_char(char c, va_list args, int *count)
 	else if (c == 'd' || c == 'i')
 	{
 		int num = va_arg(args, int);
-		char num_str[12];
-		char *str_ptr;
-
-		str_ptr = int_to_str(num, num_str);
-
-		write(1, str_ptr, strlen(str_ptr));
-		(*count) += strlen(str_ptr);
+        (*count) += int_to_str(num);
 	}
 	else if (c == '%')
 	{

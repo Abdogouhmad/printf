@@ -42,26 +42,28 @@ int num_len(int num)
  * @str: a buffer to store the resulting string
  * Return: a pointer to the resulting string
  */
-char *int_to_str(int num, char *str)
+int int_to_str(int n)
 {
-	int len = num_len(num);
-	int i;
+	int i = 0;
 
-	if (num < 0)
+	if (n < 0)
 	{
-		*str++ = '-';
-		num = -num;
-		len++;
+		i += my_putchar('-');
+		if (n == -2147483648)
+		{
+			i += my_putchar('2');
+			n %= 1000000000;
+		}
+
+		i += int_to_str(-n);
 	}
-
-	str += len;
-	*str-- = '\0';
-
-	for (i = 0; i < len; i++)
+	else if (n >= 0 && n <= 9)
+		i += my_putchar(n + '0');
+	else
 	{
-		*str-- = num % 10 + '0';
-		num /= 10;
+		i += int_to_str(n / 10);
+		i += int_to_str(n % 10);
 	}
+	return (i);
 
-	return (str + 1);
 }

@@ -9,27 +9,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
-
-
-/* 0_task prototypes */
-char *int_to_str(int num, char *str);
-int num_len(int num);
-void handle_char(char c, va_list args, int *count);
-/*definers*/
-/* #define MAX_DIGITS 10 */
 /*prototypes*/
-
-int _strlen(const char *str);
 int my_putchar(char c);
+int num_len(int num);
+int int_to_str(int n);
+int my_strlen(const char *str);
+void check_percent(int *count_char);
 void print_string(const char *string);
 void check_char(va_list myarg, int *count_char);
 void check_string(va_list myarg, int *count_char);
-void check_percent(int *count_char);
+void handle_char(char c, va_list args, int *count);
 int _printf(const char *format, ...);
-
-/* 1_task prototypes */
-void int_handler(int num, int *count_char);
-int switches(char casevalue, va_list myarg, int *counter);
-
-
 #endif

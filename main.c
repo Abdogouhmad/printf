@@ -30,6 +30,7 @@ int main(void)
 	printf("Len:[%d]\n", len);
 	printf("Len2:[%d]\n", len2);
 
+	_printf("%d\n", -2147483648);
 
 	return (0);
 }
