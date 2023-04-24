@@ -12,7 +12,9 @@
 
 
 /* 0_task prototypes */
-
+char *int_to_str(int num, char *str);
+int num_len(int num);
+void handle_char(char c, va_list args, int *count);
 /*definers*/
 /* #define MAX_DIGITS 10 */
 /*prototypes*/
@@ -23,8 +25,6 @@ void print_string(const char *string);
 void check_char(va_list myarg, int *count_char);
 void check_string(va_list myarg, int *count_char);
 void check_percent(int *count_char);
-void handle_char(char c, va_list args, int *count,
-int width, int pre);/*void switches(char c, va_list myarg, int *counter);*/
 int _printf(const char *format, ...);
 
 /* 1_task prototypes */

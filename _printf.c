@@ -1,52 +1,6 @@
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <string.h>
+#include "main.h"
 
 
-/**
- * handle_char - handles a single character conversion specifier
- *
- * @c: the conversion specifier character
- * @args: the va_list of arguments
- * @count: a pointer to the running count of printed characters
- */
-void handle_char(char c, va_list args, int *count)
-{
-	switch (c)
-	{
-	case 'c':
-	{
-		char c = va_arg(args, int);
-
-		if (c == '\n')
-			write(1, "\n", 1);
-		else
-			write(1, &c, 1);
-		(*count)++;
-		break;
-	}
-	case 's':
-	{
-		char *s = va_arg(args, char *);
-
-		if (s == NULL)
-			write(1, "(null)", 6);
-		else
-			write(1, s, strlen(s));
-		(*count) += strlen(s);
-		break;
-	}
-	case '%':
-	{
-		write(1, "%", 1);
-		(*count)++;
-		break;
-	}
-	default:
-		break;
-	}
-}
 
 /**
  * _printf - prints formatted output to standard output.
@@ -56,7 +10,7 @@ void handle_char(char c, va_list args, int *count)
  *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
  *
- * Return: .....
+ * Return: the number of characters printed
  * or -1 if an error occurs.
  */
 
