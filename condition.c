@@ -42,6 +42,12 @@ void handle_char(char c, va_list args, int *count)
 		int num = va_arg(args, int);
 		(*count) += int_to_str(num);
 	}
+	else if (c == 'b')
+	{
+		unsigned int num = va_arg(args, unsigned int);
+
+		number_to_binary(num);
+	}
 	else if (c == '%')
 	{
 		write(1, "%", 1);

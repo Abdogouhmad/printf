@@ -31,6 +31,6 @@ int main(void)
 	printf("Len2:[%d]\n", len2);
 
 	_printf("%d\n", -2147483648);
-
+	_printf("%b\n", 98);
 	return (0);
 }
