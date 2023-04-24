@@ -1,52 +1,5 @@
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <string.h>
+#include  "main.h"
 
-
-/**
- * handle_char - handles a single character conversion specifier
- *
- * @c: the conversion specifier character
- * @args: the va_list of arguments
- * @count: a pointer to the running count of printed characters
- */
-void handle_char(char c, va_list args, int *count)
-{
-	switch (c)
-	{
-	case 'c':
-	{
-		char c = va_arg(args, int);
-
-		if (c == '\n')
-			write(1, "\n", 1);
-		else
-			write(1, &c, 1);
-		(*count)++;
-		break;
-	}
-	case 's':
-	{
-		char *s = va_arg(args, char *);
-
-		if (s == NULL)
-			write(1, "(null)", 6);
-		else
-			write(1, s, strlen(s));
-		(*count) += strlen(s);
-		break;
-	}
-	case '%':
-	{
-		write(1, "%", 1);
-		(*count)++;
-		break;
-	}
-	default:
-		break;
-	}
-}
 
 /**
  * _printf - prints formatted output to standard output.
@@ -55,33 +8,72 @@ void handle_char(char c, va_list args, int *count)
  *          Supported format specifiers are %c, %s, and %%.
  *          Any other characters are printed as-is.
  * @...: optional arguments to be printed according to the format specifiers.
- *
+ *@stream:  the stream to print to.
  * Return: .....
  * or -1 if an error occurs.
  */
 
-int _printf(const char *format, ...)
+int _printf(FILE *stream, const char *format, ...)
 {
-	int count = 0, i;
+	int count = 0, i, width = 0, precision = -1;
 	va_list args;
+
+	if (!format)
+		return (-1);
 
 	va_start(args, format);
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
-			handle_char(format[++i], args, &count);
+		{
+			i++;
+
+			if (format[i] == '\0')
+				return (-1);
+
+			if (format[i] == '-')
+			{
+				i++;
+				width = -1;
+			}
+
+			while (format[i] >= '0' && format[i] <= '9')
+			{
+				width = width * 10 + format[i] - '0';
+				i++;
+			}
+
+			if (format[i] == '.')
+			{
+				i++;
+				precision = 0;
+
+				while (format[i] >= '0' && format[i] <= '9')
+				{
+					precision = precision * 10 + format[i] - '0';
+					i++;
+				}
+			}
+
+			if (width < 0)
+			{
+				width = -width;
+				precision = -1;
+			}
+
+			handle_char(format[i], args, &count, width, precision);
+			width = 0;
+			precision = -1;
+		}
 		else
 		{
-			write(1, &format[i], 1);
+			write(fileno(stream), &format[i], 1);
 			count++;
 		}
 	}
 
 	va_end(args);
+
 	return (count);
 }
