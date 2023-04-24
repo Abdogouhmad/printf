@@ -7,15 +7,8 @@
  */
 void number_to_binary(unsigned int num)
 {
-	char cara;
-
 	if (num > 1)
-	{
 		number_to_binary(num / 2);
-	}
-	if (num % 2 == 0)
-	cara = '0';
-	else
-	cara = '1';
-	write(1, &cara, 1);
+
+	write(1, (num % 2) ? "1" : "0", 1);
 }
