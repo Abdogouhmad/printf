@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*by div-styl and adilma53*/
 /**
  * handle_char - handles a single character conversion specifier
  *
@@ -13,9 +13,9 @@ void handle_char(char c, va_list args, int *count)
 	{
 	case 'c':
 	{
-		char ch = va_arg(args, int);
+		char character = va_arg(args, int);
 
-		write(1, &ch, 1);
+		write(1, &character, 1);
 		(*count)++;
 		break;
 	}
@@ -33,14 +33,14 @@ void handle_char(char c, va_list args, int *count)
 	case 'd':
 	case 'i':
 	{
-		int num = va_arg(args, int);
-		char num_str[12];
-		char *str_ptr;
+		int numbers = va_arg(args, int);
+		char numbers_str[12];
+		char *string_ptr;
 
-		str_ptr = int_to_str(num, num_str);
+		string_ptr = int_to_str(numbers, numbers_str);
 
-		write(1, str_ptr, strlen(str_ptr));
-		(*count) += strlen(str_ptr);
+		write(1, string_ptr, strlen(string_ptr));
+		(*count) += strlen(string_ptr);
 		break;
 	}
 	case '%':

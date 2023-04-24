@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*by div-styl and adilma53*/
 
 /**
  * check_percent - writes a percent sign to standard output.
