@@ -1,6 +1,10 @@
 #include "main.h"
 /*by div-styl and adilma53*/
-
+/**
+ * _strlen - count the string len
+ * @s: the string to be counted
+ * Return: the len value
+*/
 int _strlen(char *s)
 {
 	int i = 0;
