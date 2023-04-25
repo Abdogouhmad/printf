@@ -19,8 +19,5 @@ int _printf(const char *format, ...);
 /*advance prototypes*/
 int number_to_binary(unsigned int num);
 /* task 3 */
-int hex_octa_binary(unsigned int num, char base);
-int uint_handler(unsigned int num);
-
 
 #endif

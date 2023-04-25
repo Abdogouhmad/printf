@@ -2,12 +2,11 @@
 #include "main.h"
 #define MAX_BUFFER_SIZE 64
 
-
 /**
- * hex_octa_binary - .....
+ * hex_octa_binary - converts a number to a hex
  *
- * @num: ....
- * @base: .....
+ * @num: number to be converted
+ * @base: number convered
  *
  * Return: ....
  */
@@ -21,7 +20,7 @@ int hex_octa_binary(unsigned int num, char base)
 
 	if (num == 0)
 	{
-		putchar('0');
+		my_putchar('0');
 		return (1);
 	}
 	if (base == 'x')
@@ -52,7 +51,7 @@ int hex_octa_binary(unsigned int num, char base)
 		}
 	}
 	for (j = i - 1; j >= 0; j--)
-		putchar(buffer[j]);
+		my_putchar(buffer[j]);
 	return (i);
 }
 
@@ -75,7 +74,6 @@ int uint_handler(unsigned int num)
 		write(1, "0", 1);
 		return (1);
 	}
-
 	num_copy = num;
 	while (num_copy != 0)
 	{

@@ -1,6 +1,5 @@
 #include "main.h"
-
-
+/*by div-styl and adilma53*/
 
 /**
  * _printf - prints formatted output to standard output.

@@ -47,16 +47,6 @@ void handle_char(char c, va_list args, int *count)
 
 		(*count) += number_to_binary(num);
 	}
-	else if (c == 'o' || c == 'x' || c == 'X')
-	{
-		unsigned int num = (va_arg(args, unsigned int));
-		(*count) += hex_octa_binary(num, c);
-	}
-	else if (c == 'u')
-	{
-		unsigned int num = (va_arg(args, unsigned int));
-		(*count) += uint_handler(num);
-	}
 	else if (c == '%')
 	{
 		write(1, "%", 1);
