@@ -28,7 +28,22 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
-			handle_char(format[++i], args, &count);
+		{
+			if (format[++i] == 'o' || format[++i] == 'x' || format[++i] == 'X')
+			{
+				unsigned int num = (va_arg(args, unsigned int));
+
+				count += hex_octa_binary(num, format[++i]);
+			}
+			else if (format[++i] == 'u')
+			{
+				unsigned int num = (va_arg(args, unsigned int));
+
+				count += uint_handler(num);
+			}
+			else
+				handle_char(format[++i], args, &count);
+		}
 		else
 		{
 			write(1, &format[i], 1);
