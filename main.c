@@ -15,7 +15,8 @@ int main(void)
 
 	int len = 0;
 	int len2 = 0;
-	unsigned int ui = 42;
+	unsigned int ui;
+	ui = (unsigned int)INT_MAX + 1024;
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
 

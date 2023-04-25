@@ -27,3 +27,5 @@ int number_to_binary(unsigned int num)
 
 	return (count);
 }
+
+

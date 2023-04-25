@@ -47,6 +47,8 @@ void handle_char(char c, va_list args, int *count)
 
 		(*count) += number_to_binary(num);
 	}
+	else if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
+		(*count) += number_to_hx_to_octal(va_arg(args, unsigned int), c);
 	else if (c == '%')
 	{
 		write(1, "%", 1);

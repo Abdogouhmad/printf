@@ -1,7 +1,14 @@
 #include "main.h"
 /*by div-styl and adilma53*/
 
+int _strlen(char *s)
+{
+	int i = 0;
 
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
 /**
  * check_percent - writes a percent sign to standard output.
  *
