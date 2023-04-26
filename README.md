@@ -2,7 +2,8 @@
 
 The project is condcated by ALX program and it  is about creating the most common C function for printing text into consol ```printf``The tasks had never been easy for me and my dear college [Adilma53](https://github.com/adilma53)
 and it was a challaging to reach *the task 5 out of 15*
-[time flies](https://media.giphy.com/media/jVStxzak9yk2Q/giphy.gif)
+
+[time flies](https://media0.giphy.com/media/jVStxzak9yk2Q/giphy.gif?cid=ecf05e47uxjdh91kgnme5upgxffyiasis4prbe84rl82m0h5&ep=v1_gifs_search&rid=giphy.gif&ct=g)
 
 # TASK (0):
 
