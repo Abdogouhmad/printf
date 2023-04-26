@@ -67,15 +67,6 @@ void handle_char(char c, va_list args, int *count)
 				(*count) += my_putchar(str[i]);
 		}
 	}
-	else if (c == 'p')
-	{
-		void *p = va_arg(args, void *);
-
-		my_putchar('0');
-		my_putchar('x');
-		(*count) += 2;
-		(*count) += handle_point(p);
-	}
 	else if (c == '%')
 	{
 		write(1, "%", 1);

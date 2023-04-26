@@ -27,7 +27,4 @@ void handle_decimal(unsigned int num, char *buffer);
 int number_to_hx_to_octal(unsigned int num, char base);
 /*task 5*/
 void print_hex(unsigned int num);
-/*task 6*/
-int handle_point(void *p);
-
 #endif

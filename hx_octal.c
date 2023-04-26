@@ -62,46 +62,6 @@ void handle_decimal(unsigned int num, char *buffer)
 	buffer[index] = '\0';
 }
 /**
- * handle_point - print the address of a pointer
- * @p: the pointer that should print the address
- * Return: addresse
-*/
-int handle_point(void *p)
-{
-	int compare = 0, i = 0;
-	unsigned long int number = (unsigned long int)p;
-	char *hex_digt = "0123456789abcdef";
-	int hx_digt_len = 16;
-	int max[100];
-
-	if (p == NULL)
-	{
-		compare += write(1, "(nil)", 5);
-		return (compare);
-	}
-	write(1, "0x", 2);
-	if (number == 0)
-	{
-		write(1, "0", 1);
-		compare++;
-	}
-	else
-	{
-		while (number != 0)
-		{
-			max[i] = number % hx_digt_len;
-			number /= hx_digt_len;
-			i++;
-		}
-		for (i = i - 1; i >= 0; i--)
-		{
-			my_putchar(hex_digt[max[i]]);
-			compare++;
-		}
-	}
-	return (compare + 2);
-}
-/**
  * number_to_hx_to_octal -	converts a number to hex or octal
  * @num: number to be converted
  * @base: base of the number
