@@ -1,8 +1,10 @@
 # 0x11. C - printf
 
-The project is about creating the most common C function for printing text into consol ```printf``The tasks had never been easy for me and my dear college [Adilma53](https://github.com/adilma53)
+The project is condcated by ALX program and it  is about creating the most common C function for printing text into consol ```printf``The tasks had never been easy for me and my dear college [Adilma53](https://github.com/adilma53)
+and it was a challaging to reach *the task 5 out of 15*
+[time flies](https://media.giphy.com/media/jVStxzak9yk2Q/giphy.gif)
 
-# Mission (0):
+# TASK (0):
 
 **Write a function that produces output according to a format.**
 
@@ -21,5 +23,16 @@ format is a character string. The format string is composed of zero or more dire
 
 **~~has been done successfully~~**
 
-# Mission (1):
+# TASK (1):
 
+**Handle the following conversion specifiers:**
+
+```d```
+```i```
+
+1. You don’t have to handle the flag characters
+2. You don’t have to handle field width
+3. You don’t have to handle precision
+4. You don’t have to handle the length modifiers
+
+**~~has been done successfully~~**
