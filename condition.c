@@ -49,6 +49,24 @@ void handle_char(char c, va_list args, int *count)
 	}
 	else if (c == 'u' || c == 'o' || c == 'x' || c == 'X')
 		(*count) += number_to_hx_to_octal(va_arg(args, unsigned int), c);
+	else if (c == 'S')
+	{
+		int i;
+		char *str = va_arg(args, char *);
+
+		for (i = 0; str[i] != '\0'; i++)
+		{
+			if (str[i] < ' ' || str[i] >= 127)
+			{
+				my_putchar('\\');
+				my_putchar('x');
+				print_hex(str[i]);
+				(*count) += 4;
+			}
+			else
+				(*count) += my_putchar(str[i]);
+	}
+	}
 	else if (c == '%')
 	{
 		write(1, "%", 1);

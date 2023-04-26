@@ -24,4 +24,6 @@ void handle_hex(unsigned int num, char base, char *buffer);
 void handle_octal(unsigned int num, char *buffer);
 void handle_decimal(unsigned int num, char *buffer);
 int number_to_hx_to_octal(unsigned int num, char base);
+/*task 5*/
+void print_hex(unsigned int num);
 #endif

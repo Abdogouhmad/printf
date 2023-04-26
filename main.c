@@ -39,6 +39,7 @@ int main(void)
    _printf("Unsigned octal:[%o]\n", ui);
 
 	_printf("Unsigned:[%u]\n", ui);
+	 _printf("%S\n", "Best\nSchool");
 	
 	return (0);
 }
