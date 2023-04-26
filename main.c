@@ -16,7 +16,7 @@ int main(void)
 	int len = 0;
 	int len2 = 0;
 	unsigned int ui;
-	void *addr = NULL;
+	void *addr = &ui;
 
 	ui = (unsigned int)INT_MAX + 1024;
 	_printf("Character:[%c]\n", 'H');

@@ -74,7 +74,7 @@ int handle_point(void *p)
 
 	for (index = 0; number > 0; index++)
 	{
-		buffer[index] = number % 16 + '0';
+		buffer[index] = "0123456789abcdef"[number % 16];
 		number /= 16;
 	}
 	for (rd = index - 1; rd >= 0; rd--)
@@ -82,7 +82,7 @@ int handle_point(void *p)
 		my_putchar(buffer[rd]);
 		cnt++;
 	}
-	return (cnt);
+	return (cnt + 2);
 }
 /**
  * number_to_hx_to_octal -	converts a number to hex or octal
