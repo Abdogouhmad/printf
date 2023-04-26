@@ -67,15 +67,13 @@ void handle_decimal(unsigned int num, char *buffer)
  * @count: number of digits printed
  * Return: void
 */
-void handle_point(va_list args, int *count)
+void handle_point(unsigned int num, char *buffer)
 {
-	void *ptr;
-	char buffer[MAX_BUFFER_SIZE];
+	void *ptr = (void *) (unsigned  long)num;
 
-	ptr = va_arg(args, void *);
 	handle_hex((unsigned long) ptr, 'x', buffer);
-	(*count) += write(1, "0x", 2);
-	(*count) += write(1, buffer, _strlen(buffer));
+	write(1, "0x", 2);
+	write(1, buffer, _strlen(buffer));
 }
 /**
  * number_to_hx_to_octal -	converts a number to hex or octal
@@ -100,7 +98,7 @@ int number_to_hx_to_octal(unsigned int num, char base)
 	else if (base == 'u')
 		handle_decimal(num, buffer);
 	else if (base == 'p')
-		handle_point(NULL, NULL);
+		handle_point(num, buffer);
 	else
 	{
 		return (0);
