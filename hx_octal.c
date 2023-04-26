@@ -62,6 +62,22 @@ void handle_decimal(unsigned int num, char *buffer)
 	buffer[index] = '\0';
 }
 /**
+ * handle_point - converts a number to hex
+ * @args: arguments to be printed
+ * @count: number of digits printed
+ * Return: void
+*/
+void handle_point(va_list args, int *count)
+{
+	void *ptr;
+	char buffer[MAX_BUFFER_SIZE];
+
+	ptr = va_arg(args, void *);
+	handle_hex((unsigned long) ptr, 'x', buffer);
+	(*count) += write(1, "0x", 2);
+	(*count) += write(1, buffer, _strlen(buffer));
+}
+/**
  * number_to_hx_to_octal -	converts a number to hex or octal
  * @num: number to be converted
  * @base: base of the number
@@ -78,17 +94,13 @@ int number_to_hx_to_octal(unsigned int num, char base)
 		return (1);
 	}
 	if (base == 'x' || base == 'X')
-	{
 		handle_hex(num, base, buffer);
-	}
 	else if (base == 'o')
-	{
 		handle_octal(num, buffer);
-	}
 	else if (base == 'u')
-	{
 		handle_decimal(num, buffer);
-	}
+	else if (base == 'p')
+		handle_point(NULL, NULL);
 	else
 	{
 		return (0);

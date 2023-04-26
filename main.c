@@ -16,6 +16,9 @@ int main(void)
 	int len = 0;
 	int len2 = 0;
 	unsigned int ui;
+	char *str = "Hello, world!";
+	void *ptr = &str;
+
 	ui = (unsigned int)INT_MAX + 1024;
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
@@ -40,6 +43,9 @@ int main(void)
 
 	_printf("Unsigned:[%u]\n", ui);
 	 _printf("%S\n", "Best\nSchool");
-	
+
+
+	_printf("String: %s\n", str);
+	_printf("Pointer: %p\n", ptr);
 	return (0);
 }
