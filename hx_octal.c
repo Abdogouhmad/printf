@@ -68,21 +68,38 @@ void handle_decimal(unsigned int num, char *buffer)
 */
 int handle_point(void *p)
 {
-	unsigned long number = (unsigned long)p;
-	char buffer[MAX_BFFR];
-	int index, rd, cnt = 0;
+	int compare = 0, i = 0;
+	unsigned long int number = (unsigned long int)p;
+	char *hex_digt = "0123456789abcdef";
+	int hx_digt_len = 16;
+	int max[100];
 
-	for (index = 0; number > 0; index++)
+	if (p == NULL)
 	{
-		buffer[index] = "0123456789abcdef"[number % 16];
-		number /= 16;
+		compare += write(1, "(nil)", 5);
+		return (compare);
 	}
-	for (rd = index - 1; rd >= 0; rd--)
+	write(1, "0x", 2);
+	if (number == 0)
 	{
-		my_putchar(buffer[rd]);
-		cnt++;
+		write(1, "0", 1);
+		compare++;
 	}
-	return (cnt + 2);
+	else
+	{
+		while (number != 0)
+		{
+			max[i] = number % hx_digt_len;
+			number /= hx_digt_len;
+			i++;
+		}
+		for (i = i - 1; i >= 0; i--)
+		{
+			my_putchar(hex_digt[max[i]]);
+			compare++;
+		}
+	}
+	return (compare + 2);
 }
 /**
  * number_to_hx_to_octal -	converts a number to hex or octal
