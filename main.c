@@ -16,8 +16,7 @@ int main(void)
 	int len = 0;
 	int len2 = 0;
 	unsigned int ui;
-	char *str = "Hello, world!";
-	void *ptr = &str;
+	void *addr = NULL;
 
 	ui = (unsigned int)INT_MAX + 1024;
 	_printf("Character:[%c]\n", 'H');
@@ -45,7 +44,7 @@ int main(void)
 	 _printf("%S\n", "Best\nSchool");
 
 
-	_printf("String: %s\n", str);
-	_printf("Pointer: %p\n", ptr);
+    _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
 	return (0);
 }

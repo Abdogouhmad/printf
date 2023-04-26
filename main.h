@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #define MAX_BUFFER_SIZE 60
+#define MAX_BFFR 1024
 /*by div-styl and adilma53*/
 /*libraries*/
 #include <unistd.h>
@@ -26,5 +27,7 @@ void handle_decimal(unsigned int num, char *buffer);
 int number_to_hx_to_octal(unsigned int num, char base);
 /*task 5*/
 void print_hex(unsigned int num);
-void handle_point(unsigned int num, char *buffer);
+/*task 6*/
+int handle_point(void *p);
+
 #endif

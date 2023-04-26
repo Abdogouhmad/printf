@@ -62,18 +62,27 @@ void handle_decimal(unsigned int num, char *buffer)
 	buffer[index] = '\0';
 }
 /**
- * handle_point - converts a number to hex
- * @args: arguments to be printed
- * @count: number of digits printed
- * Return: void
+ * handle_point - print the address of a pointer
+ * @p: the pointer that should print the address
+ * Return: addresse
 */
-void handle_point(unsigned int num, char *buffer)
+int handle_point(void *p)
 {
-	void *ptr = (void *) (unsigned  long)num;
+	unsigned long number = (unsigned long)p;
+	char buffer[MAX_BFFR];
+	int index, rd, cnt = 0;
 
-	handle_hex((unsigned long) ptr, 'x', buffer);
-	write(1, "0x", 2);
-	write(1, buffer, _strlen(buffer));
+	for (index = 0; number > 0; index++)
+	{
+		buffer[index] = number % 16 + '0';
+		number /= 16;
+	}
+	for (rd = index - 1; rd >= 0; rd--)
+	{
+		my_putchar(buffer[rd]);
+		cnt++;
+	}
+	return (cnt);
 }
 /**
  * number_to_hx_to_octal -	converts a number to hex or octal
@@ -97,8 +106,6 @@ int number_to_hx_to_octal(unsigned int num, char base)
 		handle_octal(num, buffer);
 	else if (base == 'u')
 		handle_decimal(num, buffer);
-	else if (base == 'p')
-		handle_point(num, buffer);
 	else
 	{
 		return (0);
